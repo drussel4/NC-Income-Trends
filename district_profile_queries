@@ -8,7 +8,7 @@
 --INSERT INTO
 --arenatraining.sbx_russelld.nc_county_gender_counts
 --^INSERT not supported in free BigQuery
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -69,7 +69,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Gender breakdown (counts)
 
 ----Gender breakdown (%)
@@ -77,7 +77,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_gender_percents
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_gender_percents AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -133,7 +133,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 --END Gender breakdown (%)
 
 ----Ethnicity breakdown (counts)
@@ -141,7 +141,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_ethnicity_counts
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_ethnicity_counts AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -227,7 +227,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Ethnicity breakdown (counts)
 
 ----Ethnicity breakdown (%)
@@ -235,7 +235,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_ethnicity_percents
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_ethnicity_percents AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -316,7 +316,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Ethnicity breakdown (%)
 
 ----Gender and age breakdown (counts)
@@ -324,7 +324,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_ethnicity_by_age_counts
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_ethnicity_by_age_counts AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -445,7 +445,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Gender and age breakdown (counts)
 
 ----Gender and age breakdown (%)
@@ -574,92 +574,15 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Gender and age breakdown (%)
-
-----Ethnicity and age breakdown (counts) INCOMPLETE DATA AVAIL
-/*
-SELECT
-    geo_id,
-    total_pop,
-    white_pop,
-    black_pop,
-    hispanic_pop,
-    asian_pop,
-    amerindian_pop,
-    other_race_pop,
-    two_or_more_races_pop
-FROM bigquery-public-data.census_bureau_acs.county_2018_5yr --county_2018_5yr county_2016_5yr county_2014_5yr county_2012_5yr county_2010_5yr
-WHERE geo_id LIKE '37%' --Counties in NC
-*/
-
-
---3 TIERS OF INCOME
---SUM(income_less_10000 + income_10000_14999 + income_15000_19999 + income_20000_24999 + income_25000_29999 + income_30000_34999 + income_35000_39999 + income_40000_44999 + income_45000_49999) as inc_less_than_50,
---SUM(income_50000_59999 + income_60000_74999 + income_75000_99999) as inc_50_100,
---SUM(income_100000_124999 + income_125000_149999 + income_150000_199999 + income_200000_or_more) as inc_more_than_100
-
---4 TIERS OF INCOME
---SUM(income_less_10000 + income_10000_14999 + income_15000_19999 + income_20000_24999 + income_25000_29999) as inc_less_than_30,
---SUM(income_30000_34999 + income_35000_39999 + income_40000_44999 + income_45000_49999 + income_50000_59999) as inc_30_60,
---SUM(income_60000_74999 + income_75000_99999) as inc_60_100,
---SUM(income_100000_124999 + income_125000_149999 + income_150000_199999 + income_200000_or_more) as inc_more_than_100
-
-
-----Income breakdown by county with total (count)
-/*
-SELECT
-   *
-FROM(
-    SELECT
-        geo_id,
-        SUM(income_less_10000 + income_10000_14999 + income_15000_19999 + income_20000_24999 + income_25000_29999) as inc_less_than_30,
-        SUM(income_30000_34999 + income_35000_39999 + income_40000_44999 + income_45000_49999 + income_50000_59999) as inc_30_60,
-        SUM(income_60000_74999 + income_75000_99999) as inc_60_100,
-        SUM(income_100000_124999 + income_125000_149999 + income_150000_199999 + income_200000_or_more) as inc_more_than_100
-    FROM bigquery-public-data.census_bureau_acs.county_2018_5yr --county_2018_5yr county_2016_5yr county_2014_5yr county_2012_5yr county_2010_5yr
-    WHERE geo_id LIKE '37%' --Counties in NC
-    GROUP BY ROLLUP(geo_id))
-WHERE inc_less_than_30 IS NOT NULL
-AND inc_30_60 IS NOT NULL
-AND inc_60_100 IS NOT NULL
-AND inc_more_than_100 IS NOT NULL
-*/
-----END Income breakdown by county with total (counts)
-
-
-----Income breakdown by county with total (%)
-/*
-SELECT
-    geo_id,
-    ROUND((inc_less_than_30 / total_income) * 100, 1) as inc_less_than_30_pct,
-    ROUND((inc_30_60 / total_income) * 100, 1) as inc_30_60_pct,
-    ROUND((inc_60_100 / total_income) * 100, 1) as inc_60_100_pct,
-    ROUND((inc_more_than_100 / total_income) * 100, 1) as inc_more_than_100_pct
-FROM(
-    SELECT
-        geo_id,
-        SUM(income_less_10000 + income_10000_14999 + income_15000_19999 + income_20000_24999 + income_25000_29999) as inc_less_than_30,
-        SUM(income_30000_34999 + income_35000_39999 + income_40000_44999 + income_45000_49999 + income_50000_59999) as inc_30_60,
-        SUM(income_60000_74999 + income_75000_99999) as inc_60_100,
-        SUM(income_100000_124999 + income_125000_149999 + income_150000_199999 + income_200000_or_more) as inc_more_than_100,
-        SUM(income_less_10000 + income_10000_14999 + income_15000_19999 + income_20000_24999 + income_25000_29999 + income_30000_34999 + income_35000_39999 + income_40000_44999 + income_45000_49999 + income_50000_59999 + income_60000_74999 + income_75000_99999 + income_100000_124999 + income_125000_149999 + income_150000_199999 + income_200000_or_more) as total_income
-    FROM bigquery-public-data.census_bureau_acs.county_2018_5yr --county_2018_5yr county_2016_5yr county_2014_5yr county_2012_5yr county_2010_5yr
-    WHERE geo_id LIKE '37%' --Counties in NC
-    GROUP BY ROLLUP(geo_id))
-WHERE inc_less_than_30 IS NOT NULL
-AND inc_30_60 IS NOT NULL
-AND inc_60_100 IS NOT NULL
-AND inc_more_than_100 IS NOT NULL
-*/
-----END Income breakdown by county with total (%)
 
 ----Income breakdown by county (count)
 --DROP TABLE
 --arenatraining.sbx_russelld.nc_county_household_income_counts
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_household_income_counts AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -725,7 +648,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Income breakdown by county (count)
 
 ----Income breakdown by county (%)
@@ -733,7 +656,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_household_income_percents
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_household_income_percents AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -799,7 +722,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Income breakdown by county (%)
 
 ----Education attainment (counts)
@@ -807,7 +730,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_education_attain_counts
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_education_attain_counts AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
@@ -913,7 +836,7 @@ LEFT JOIN bigquery-public-data.census_utility.fips_codes_all f
 ON c.geo_id = f.county_fips_code
 WHERE c.geo_id LIKE '37%' --Counties in NC
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Education attainment (counts)
 
 ----Education attainment (%)
@@ -921,7 +844,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_education_attain_percents
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_education_attain_percents AS
-/*
+
 SELECT
     2018 as year_int,
     j.geo_id,
@@ -1102,41 +1025,5 @@ FROM(
     ON c.geo_id = f.county_fips_code
     WHERE c.geo_id LIKE '37%') j
 ORDER BY year_int DESC, geo_id ASC
-*/
+
 ----END Education attainment (%)
-
-/*
---Census FIPS lookups
-SELECT *
-FROM bigquery-public-data.census_utility.fips_codes_all
---WHERE county_fips_code = '37003'
-WHERE state_fips_code = '37'
-AND area_name = 'Orange County'
-*/
-
-/*
-SELECT 
-    cand_name,
-    cand_id,
-    cand_pty_affiliation
-FROM bigquery-public-data.fec.cn20
-WHERE cand_name = 'DUERR, JAMES MATTHEW'
-*/
-
-/*
-SELECT
-    cmte_id,
-    cmte_nm
-    cmte_pty_affiliation,
-    cand_id
-FROM bigquery-public-data.fec.cm20
-WHERE cand_id = 'H0TX27038'
-*/
-
-/*
-SELECT
-    advertiser_id,
-    advertiser_declared_promoter_name
-FROM bigquery-public-data.google_political_ads.advertiser_declared_stats
-WHERE advertiser_declared_promoter_name LIKE '%San Francisco%'
-*/
