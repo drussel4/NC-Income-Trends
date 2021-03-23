@@ -453,7 +453,7 @@ ORDER BY year_int DESC, geo_id ASC
 --arenatraining.sbx_russelld.nc_county_ethnicity_by_age_percents
 --CREATE TABLE
 --arenatraining.sbx_russelld.nc_county_ethnicity_by_age_percents AS
-/*
+
 SELECT
     2018 as year_int,
     c.geo_id,
