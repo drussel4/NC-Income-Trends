@@ -8,9 +8,9 @@ This project includes SQL queries to retrieve data from BigQuery's public datase
 ## SQL Queries
 The queries retrieve (1) household income, (2) gender, (3) ethnicity, (4) gender by age, and (5) educational attainment as available from the American Community Survey (ACS) in the BigQuery public databases within the <i>bigquery-public-data</i> library. As of March 2021, the latest year available is 2018. Each of the five metrics is queried twice, firstly as a count of population and secondly as a percentage of population. Each query includes a join to the <i>census_utility.fips_codes_all</i> table in order to map geo_id to area_name (county name). Each also includes UNION clauses to stack yearly tables, from 2010 to 2018 in two-year intervals.
 
-[bigquery_navigation](https://github.com/drussel4/NC-Income-Trends/blob/main/img/bigquery_navigation.png?raw=true)
+![bigquery_navigation](https://github.com/drussel4/NC-Income-Trends/blob/main/img/bigquery_navigation.png?raw=true)
 
-![Here is the SQL query to tier household income by residents making less than $30k, $30-60k, $60-100k, and $100k+ as a percent of the population.](https://github.com/drussel4/NC-Income-Trends/blob/eb835a1fc6ad46de13bc59c1b3080de115bcafa8/district_profile_queries.sql#L654-L726)
+[Here is the SQL query to tier household income by residents making less than $30k, $30-60k, $60-100k, and $100k+ as a percent of the population.](https://github.com/drussel4/NC-Income-Trends/blob/eb835a1fc6ad46de13bc59c1b3080de115bcafa8/district_profile_queries.sql#L654-L726)
 
 ## Evaluating Results
 Topline observations:
