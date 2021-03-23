@@ -10,9 +10,7 @@ The queries retrieve (1) household income, (2) gender, (3) ethnicity, (4) gender
 
 ![bigquery_navigation](https://github.com/drussel4/NC-Income-Trends/blob/main/img/bigquery_navigation.png?raw=true)
 
-Here is the SQL query to tier household income by residents making less than $30k, $30-60k, $60-100k, and $100k+ as a percent of the population.
-
-![household_inc_percent](https://github.com/drussel4/NC-Income-Trends/blob/eb835a1fc6ad46de13bc59c1b3080de115bcafa8/district_profile_queries.sql#L654-L726)
+![Here is the SQL query to tier household income by residents making less than $30k, $30-60k, $60-100k, and $100k+ as a percent of the population.](https://github.com/drussel4/NC-Income-Trends/blob/eb835a1fc6ad46de13bc59c1b3080de115bcafa8/district_profile_queries.sql#L654-L726)
 
 ## Evaluating Results
 Topline observations:
