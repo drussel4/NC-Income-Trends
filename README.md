@@ -15,10 +15,10 @@ The queries retrieve (1) household income, (2) gender, (3) ethnicity, (4) gender
 ## Evaluating Results
 Topline observations:
 - North Carolina’s household income falls mostly into the lower two tiers:
- - <$30k: 33.1%
- - $30-60k: 28.9%
- - $60-100k: 21.5%
- - $100k+: 16.4%
+   - <$30k: 33.1%
+   - $30-60k: 28.9%
+   - $60-100k: 21.5%
+   - $100k+: 16.4%
 - Wake County boasts the largest portion of it’s population in the upper tiers at 61% <i>top-left graph</i>. Graham has the lowest at 24% <i>top-right</i>.
 - Hyde led all counties by adding 18% of residents to the top 2 from the bottom 2 tiers, outpacing the statewide average of 6% <i>bottom-left</i>. Greene was the only county with residents increasingly comprising the bottom 2 tiers, falling by 1% <i>bottom-right</i>.
 
